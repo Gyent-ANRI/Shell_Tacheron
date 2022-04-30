@@ -1,0 +1,20 @@
+#!/bin/bash
+
+PIDPATH='/etc/tacheron_15.pid'
+PIPENAME='/tmp/tachepipe'
+
+if [ -e $PIPENAME ]
+then
+    rm $PIPENAME
+fi
+
+echo $$ >> $PIDPATH
+mkfifo  $PIPENAME
+chmod a+w $PIPENAME
+trap 'rm $PIPENAME;exit' 15
+
+while read i
+do
+    pid=$(cat $PIDPATH | head -1)
+    kill -15 $pid
+done < $PIPENAME
