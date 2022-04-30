@@ -28,7 +28,7 @@ export ALLOW_FILE='/etc/tacheron.allow'
 
 # End the log file with month-year
 function changeLogFile {
-    TACHERONLOG=$LOGPATH'LOG'$(date + '%m-%y')
+    TACHERONLOG=$LOGPATH'LOG'$(date +'%m-%y')
     if [ ! -f $TACHERONLOG ]
     then
         touch $TACHERONLOG
