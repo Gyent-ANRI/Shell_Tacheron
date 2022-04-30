@@ -4,11 +4,12 @@
 主要分为两个部分
 - tashrontab 用来设定需要执行的任务
 - tashron 定时执行任务
+- pipeline 作为上述两个程序交流的中间部分
 ### tashrontab
-usage: tashrotab  [-u user] {-l | -r | -e}
+usage: tashrotab  [-u user] {-l | -r | -w}
 - -l 查看已设定的任务列表
 - -r 删除任务列表文件
-- -e 创建或编辑任务列表
+- -w 创建或编辑任务列表
 
 ### 任务设定格式
 ```
@@ -25,8 +26,14 @@ usage: tashrotab  [-u user] {-l | -r | -e}
 - second 的值为每15秒
 ### tashron
 分为三个部分:
-- 获取任务:   sort_out()
-- 选取马上会执行的任务(1h/10min):   get_tache(), get_command()
-- 在指定时间执行任务: execute_command()
+- 获取任务:   load()
+- 选取马上会执行的任务(1h/10min):   writeTacheFile(), writeCommandFile()
+- 在指定时间执行任务: main 部分
 #### 辅助函数
-- analyse_date() 解析时间中的特殊符号 '-|,|*|~' 理解其所指定的时间
+- changeLogFile: 根据当前月份选择日志文件
+- match: 判断当前时间和计划时间是否一致
+### pipeline
+- tacherontab通过管道唤醒pipeline, pipeline通过kill -15来提醒tacheron
+- tacheron 收到信号以后得知有用户更改任务列表，重新读取任务列表
+## 一点问题
+- tacheron程序必须通过kill -1或 SIGINT退出才能正确关闭和重新启动
