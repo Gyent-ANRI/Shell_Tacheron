@@ -33,7 +33,7 @@ usage: tashrotab  [-u user] {-l | -r | -w}
 - changeLogFile: 根据当前月份选择日志文件
 - match: 判断当前时间和计划时间是否一致
 ### pipeline
-- tacherontab通过管道唤醒pipeline, pipeline通过kill -15来提醒tacheron
+- tacherontab通过命名管道唤醒pipeline, pipeline通过kill -15来提醒tacheron
 - tacheron 收到信号以后得知有用户更改任务列表，重新读取任务列表
 ## 一点问题
 - tacheron程序必须通过kill -1或 SIGINT退出才能正确关闭和重新启动
