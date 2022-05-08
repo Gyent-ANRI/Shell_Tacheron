@@ -6,8 +6,8 @@
 TACHERONPATH='/etc/tacheron'
 TACHERONFILE='/etc/tacheronfileroot'
 LOGPATH='/var/log/tacheron/'
-export TACHERONLOG='/var/log/tacheron/tacheronlog'
-export TACHERONERR='/var/log/tacheron/tacheronerr'
+TACHERONLOG='/var/log/tacheron/tacheronlog'
+TACHERONERR='/var/log/tacheron/tacheronerr'
 
 # PIDFILE store the PID of this program, PIPEPROGRAM kill -15
 # to inform a change of tacheron files
@@ -20,7 +20,7 @@ TACHE_FILE='/etc/tachefile'
 COMMAND_FILE='/etc/commandfile'
 
 # store a list of username that is allowed to use tacheron
-export ALLOW_FILE='/etc/tacheron.allow'
+ALLOW_FILE='/etc/tacheron.allow'
 
 # ------------------------------------------------------------------- #
 # ----------------------------FUNTION AREA--------------------------- #
