@@ -26,7 +26,7 @@ ALLOW_FILE='/etc/tacheron.allow'
 # ----------------------------FUNTION AREA--------------------------- #
 # ------------------------------------------------------------------- #
 
-# End the log file with month-year
+# End the name of the log file with month-year
 function changeLogFile {
     TACHERONLOG=$LOGPATH'LOG'$(date +'%m-%y')
     if [ ! -f $TACHERONLOG ]
